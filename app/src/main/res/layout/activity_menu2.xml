@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity2">
+
+    <Button
+        android:id="@+id/btnPendientes"
+        android:layout_width="281dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="65dp"
+        android:text="Pendientes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnTareas"
+        android:layout_width="281dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="65dp"
+        android:text="Tareas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPendientes" />
+
+    <Button
+        android:id="@+id/btnHorarios"
+        android:layout_width="281dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="65dp"
+        android:text="Horarios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTareas" />
+
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="281dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="202dp"
+        android:text="Salir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHorarios" />
+</androidx.constraintlayout.widget.ConstraintLayout>
