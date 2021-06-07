@@ -24,7 +24,7 @@ import java.util.Map;
 public class addPendientesActivity extends AppCompatActivity {
     EditText _txtPNombre, _txtPidMateria,_txtPfecha, _txtPdescripcion;
     Button _btnPAgregar, _btnPCancelar;
-    String URLP = "http://192.168.0.106/Interfaz4/Validar.php";
+    String URLP = "http://192.168.1.76/Interfaz4/Validar.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
