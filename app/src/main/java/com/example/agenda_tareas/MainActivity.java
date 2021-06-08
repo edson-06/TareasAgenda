@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 user = _txtLUser.getText().toString().trim();
                 pass = _txtLPass.getText().toString().trim();
-                String URL ="http://192.168.0.106/Interfaz4/Validar.php";
+                String URL ="http://192.168.1.76/Interfaz4/Validar.php";
                 validarLogin(URL);
             }
         });
