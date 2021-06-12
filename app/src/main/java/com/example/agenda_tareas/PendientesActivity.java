@@ -15,24 +15,22 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
+
 public class PendientesActivity extends AppCompatActivity {
-    FloatingActionButton _btnAñadir ,_btnMexit;
+    FloatingActionButton _btnAñadir ,_btnMexit,_btnBuscar;
     ListView listView;
-    String [] pendientes ;
-    String [] idPendientes;
-
-    //Coemntario actualizado
-    //Doble Comentario
-
     RequestQueue requestQueue;
+    private ArrayList<String> pendientes;
+    private ArrayList<String> idPendientes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +40,15 @@ public class PendientesActivity extends AppCompatActivity {
 
         _btnAñadir=findViewById(R.id.btnMAdd);
         _btnMexit = findViewById(R.id.btnMexit);
+        _btnBuscar=findViewById(R.id.btnMSearch);
+        listView = (ListView)findViewById(R.id.lvPenientes);
+        //instancia de objeto
+        listView = findViewById(R.id.lvPenientes);
+
+        /////
+        obtenerListaPendientes();
+        ////
+
         _btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,48 +56,63 @@ public class PendientesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        _btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         _btnMexit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-       /*
-        //instancia de objeto
-        listView = (ListView)findViewById(R.id.lvPenientes);
+    }
+    private void pintar(ArrayList<String> names1,ArrayList<String> idPendientes){
         //adaptador
-        ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,pendientes);
+        ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,names1);
         //Pinta lista
         listView.setAdapter(adapter);
         //eventos de la lista
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(PendientesActivity.this, pendientes[position], Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PendientesActivity.this,showPendienteActivity.class);
-                startActivity(intent);
+               lanzarVentana();
             }
         });
-        */
-        obtenerListaPendientes();
     }
-    private void obtenerListaPendientes(){
-        String url = "http://192.168.1.76/Interfaz4/pending_fetch_list.php";
+    private void lanzarVentana(){
+        Intent intent = new Intent(PendientesActivity.this,showPendienteActivity.class);
+        startActivity(intent);
+    }
+    private void obtenerPendienteParticular(String id){
+
+    }
+    private void obtenerListaPendientes() {
+        String url = "http://192.168.0.109/Interfaz4/pending_fetch_list.php";
         Toast.makeText(getApplicationContext(),"010101: ",Toast.LENGTH_SHORT).show();
-        JsonObjectRequest jsor = new JsonObjectRequest(
+        JsonArrayRequest jsor = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
                 null,
-                new Response.Listener<JSONObject>() {
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Toast.makeText(getApplicationContext(),"Pendientes: ",Toast.LENGTH_SHORT).show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                    public void onResponse(JSONArray response) {
+                        JSONObject jsonObject = new JSONObject();
+                        pendientes = new ArrayList<String>();
+                        idPendientes = new ArrayList<String>();
+                        for (int i=0; i<response.length();i++){
+                            try {
+                                jsonObject = response.getJSONObject(i);
+                                pendientes.add(jsonObject.getString("nombre"));
+                                idPendientes.add(jsonObject.getString("id"));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
+                        pintar(pendientes,idPendientes);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -101,4 +123,6 @@ public class PendientesActivity extends AppCompatActivity {
         );
         requestQueue.add(jsor);
     }
+
+
 }

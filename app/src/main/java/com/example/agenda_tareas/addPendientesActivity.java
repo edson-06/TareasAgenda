@@ -24,7 +24,7 @@ import java.util.Map;
 public class addPendientesActivity extends AppCompatActivity {
     EditText _txtPNombre, _txtPidMateria,_txtPfecha, _txtPdescripcion;
     Button _btnPAgregar, _btnPCancelar;
-    String URLP = "http://192.168.1.76/Interfaz4/Validar.php";
+    String URLP = "http://192.168.0.109/Interfaz4/savePendientes.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,13 @@ public class addPendientesActivity extends AppCompatActivity {
         _btnPAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String nombre= _txtPNombre.getText().toString().trim();
+                String id= _txtPidMateria.getText().toString().trim();
+                String fecha= _txtPfecha.getText().toString().trim();
+                String descripcion= _txtPdescripcion.getText().toString().trim();
+
+                CrearPendiente(nombre, id, fecha, descripcion);
                 Toast.makeText(addPendientesActivity.this,"Añadiendo",Toast.LENGTH_SHORT).show();
             }
         });
@@ -61,16 +68,16 @@ public class addPendientesActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String, String>();
-                parametros.put("Nombre",nombre);
+                parametros.put("nombre",nombre);
                 parametros.put("idMateria",idMat);
-                parametros.put("Descripcion",descripcion);
-                parametros.put("Fecha",fecha);
+                parametros.put("fecha",fecha);
+                parametros.put("descripcion",descripcion);
                 return  parametros;
             }
         };

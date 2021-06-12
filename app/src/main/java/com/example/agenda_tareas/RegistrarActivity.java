@@ -45,7 +45,7 @@ public class RegistrarActivity extends AppCompatActivity {
         _btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String URL ="http://192.168.1.76/Interfaz4/save.php";
+                String URL ="http://192.168.0.109/Interfaz4/save.php";
                 if(validar() == 0){
                     RegistrarNuevo(URL);
                     finish();
