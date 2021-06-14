@@ -104,7 +104,7 @@ public class MateriasActivity extends AppCompatActivity {
                             id = response.getString("id");
                             nombre = response.getString("nombre");
                             area = response.getString("area");
-                            num_salon = response.getString("num_salon");
+                            num_salon = response.getString("aula");
                             profesor = response.getString("profesor");
                         } catch (Exception e) {
                             e.printStackTrace();

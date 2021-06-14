@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                 }
+                _txtLUser.setText("");
+                _txtLPass.setText("");
             }
         }, new Response.ErrorListener() {
             @Override
