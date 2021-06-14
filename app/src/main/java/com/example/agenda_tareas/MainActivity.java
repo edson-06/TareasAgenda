@@ -14,11 +14,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -26,10 +26,9 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     Button _btnIniciar,_btnRegistrar;
-    int valor =0;
     EditText _txtLUser, _txtLPass;
     String  user, pass ;
-    String RUser="", RPass="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 user = _txtLUser.getText().toString().trim();
                 pass = _txtLPass.getText().toString().trim();
-                String URL ="http://192.168.1.76/Interfaz4/Validar.php";
+                String URL ="http://192.168.0.109/Interfaz4/Validar.php";
                 validarLogin(URL);
             }
         });
@@ -59,10 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void validarLogin(String u){
-        //String URL2="http://localhost/Interfaz4/fetch.php?usuario="+user+"+&password="+pass;
-        //String u = "http://localhost/Interfaz4/Validar.php";
-
-        StringRequest stringRequest= new StringRequest(Request.Method.POST, u, new Response.Listener<String>() {
+       StringRequest stringRequest= new StringRequest(Request.Method.POST, u, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if(!response.isEmpty()){
@@ -71,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                 }
+                _txtLUser.setText("");
+                _txtLPass.setText("");
             }
         }, new Response.ErrorListener() {
             @Override
@@ -91,4 +89,5 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
 }

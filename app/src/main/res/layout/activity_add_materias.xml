@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addPendientesActivity">
+    tools:context=".addMateriasActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -16,102 +16,108 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="@drawable/pendientes" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/libro" />
 
     <EditText
-        android:id="@+id/txtPNombre"
+        android:id="@+id/txtMatNombre"
         android:layout_width="298dp"
         android:layout_height="45dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="38dp"
         android:layout_marginEnd="63dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/txtPidMateria"
+        android:id="@+id/txtMatArea"
         android:layout_width="298dp"
         android:layout_height="45dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="63dp"
         android:ems="10"
-        android:hint="idMateria"
+        android:hint="Area"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMatNombre" />
 
     <EditText
-        android:id="@+id/txtPfecha"
+        android:id="@+id/txtMatNumSalon"
         android:layout_width="298dp"
         android:layout_height="45dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="63dp"
         android:ems="10"
-        android:hint="fecha"
+        android:hint="Salon"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPidMateria" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMatArea" />
 
     <EditText
-        android:id="@+id/txtPdescripcion"
+        android:id="@+id/txtMatProfesor"
         android:layout_width="298dp"
         android:layout_height="45dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="63dp"
         android:ems="10"
-        android:hint="descripcion"
+        android:hint="Profesor"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPfecha" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMatNumSalon" />
 
     <Button
-        android:id="@+id/btnPAgregrar"
+        android:id="@+id/btnMatAgregrar"
         android:layout_width="299dp"
         android:layout_height="48dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="62dp"
         android:text="Agregar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPdescripcion" />
+        app:layout_constraintTop_toBottomOf="@+id/txtMatProfesor" />
 
     <Button
-        android:id="@+id/btnPCancelar"
+        android:id="@+id/btnMatCancelar"
         android:layout_width="299dp"
         android:layout_height="48dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="62dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginBottom="58dp"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPAgregrar"
-        app:layout_constraintVertical_bias="0.912" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMatAgregrar" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="164dp"
-        android:text="Pendiente Nuevo"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="165dp"
+        android:text="Añadir Materia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

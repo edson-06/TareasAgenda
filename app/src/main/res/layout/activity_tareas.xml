@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     android:orientation="vertical"
-    tools:context=".TareasActivity">
+    tools:context=".MateriasActivity">
+
+    <ListView
+        android:id="@+id/lvMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
@@ -20,7 +25,7 @@
         app:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnMAdd"
+            android:id="@+id/btnMatAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_input_add"
@@ -29,7 +34,7 @@
             tools:src="@android:drawable/btn_plus" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnMSearch"
+            android:id="@+id/btnMatSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_search"
@@ -38,7 +43,7 @@
             tools:src="@android:drawable/ic_menu_search" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnMexit"
+            android:id="@+id/btnMatexit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
@@ -47,9 +52,5 @@
             app:fab_title="Salir"
             tools:src="@android:drawable/ic_menu_close_clear_cancel" />
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-    <ListView
-        android:id="@+id/lvMaterias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

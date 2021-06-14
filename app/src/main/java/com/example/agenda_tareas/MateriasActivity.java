@@ -24,40 +24,35 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
-public class PendientesActivity extends AppCompatActivity {
-    FloatingActionButton _btnAñadir ,_btnMexit,_btnBuscar;
+public class MateriasActivity extends AppCompatActivity {
+    FloatingActionButton _btnMAñadir ,_btnMexit,_btnMBuscar;
     ListView listView;
     RequestQueue requestQueue;
-    private ArrayList<String> pendientes;
-    private ArrayList<String> idPendientes;
-
+    private ArrayList<String> materias;
+    private ArrayList<String> idMaterias;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pendientes);
+        setContentView(R.layout.activity_tareas);
 
         requestQueue = Volley.newRequestQueue(this);
 
-        _btnAñadir=findViewById(R.id.btnMAdd);
-        _btnMexit = findViewById(R.id.btnMexit);
-        _btnBuscar=findViewById(R.id.btnMSearch);
-        listView = (ListView)findViewById(R.id.lvPenientes);
-        //instancia de objeto
-        listView = findViewById(R.id.lvPenientes);
+        _btnMAñadir=findViewById(R.id.btnMatAdd);
+        _btnMexit = findViewById(R.id.btnMatexit);
+        _btnMBuscar=findViewById(R.id.btnMatSearch);
+        listView = (ListView)findViewById(R.id.lvMaterias);
 
         /////
-        obtenerListaPendientes();
+        obtenerListaMaterias();
         ////
-
-        _btnAñadir.setOnClickListener(new View.OnClickListener() {
+        _btnMAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PendientesActivity.this,addPendientesActivity.class);
+                Intent intent = new Intent(MateriasActivity.this,addMateriasActivity.class);
                 startActivity(intent);
             }
         });
-        _btnBuscar.setOnClickListener(new View.OnClickListener() {
+        _btnMBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -70,6 +65,7 @@ public class PendientesActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
     private void pintar(ArrayList<String> names1,ArrayList<String> idPendientes){
         //adaptador
@@ -80,23 +76,22 @@ public class PendientesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String idBuscar = idPendientes.get(position);
+                String idBuscar = idMaterias.get(position);
                 obtenerPendienteParticular(idBuscar);
             }
         });
     }
-    private void lanzarVentana(String id, String nombre, String idMateria, String fecha, String desscripción, String valor){
-        Intent intent = new Intent(PendientesActivity.this,showPendienteActivity.class);
+    private void lanzarVentana(String id, String nombre, String area, String num_salon, String professor){
+        Intent intent = new Intent(MateriasActivity.this,showMateriaActivity.class);
         intent.putExtra("id",id);
         intent.putExtra("nombre",nombre);
-        intent.putExtra("idMateria",idMateria);
-        intent.putExtra("fecha",fecha);
-        intent.putExtra("desscripción",desscripción);
-        intent.putExtra("valor",valor);
+        intent.putExtra("area",area);
+        intent.putExtra("num_salon",num_salon);
+        intent.putExtra("professor",professor);
         startActivity(intent);
     }
     private void obtenerPendienteParticular(String id){
-        String url = "http://192.168.0.109/Interfaz4/pending_fetch.php?id="+id;
+        String url = "http://192.168.0.109/Interfaz4/subject_fetch.php?id="+id;
         JsonObjectRequest jsor = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -104,51 +99,18 @@ public class PendientesActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        String id="", nombre="",idMateria="",fecha="",descripcion="",valor ="";
+                        String id="", nombre="",area="",num_salon="",profesor="";
                         try {
                             id = response.getString("id");
                             nombre = response.getString("nombre");
-                            idMateria = response.getString("idMateria");
-                            fecha = response.getString("fecha");
-                            descripcion = response.getString("descripcion");
-                            valor = response.getString("estado");
+                            area = response.getString("area");
+                            num_salon = response.getString("aula");
+                            profesor = response.getString("profesor");
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         //Toast.makeText(getApplicationContext(),"Valor nombre :"+nombre,Toast.LENGTH_SHORT).show();
-                        lanzarVentana(id, nombre, idMateria, fecha, descripcion,valor);
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),"Error :"+error.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        requestQueue.add(jsor);
-    }
-    private void obtenerListaPendientes() {
-        String url = "http://192.168.0.109/Interfaz4/pending_fetch_list.php";
-        JsonArrayRequest jsor = new JsonArrayRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        JSONObject jsonObject = new JSONObject();
-                        pendientes = new ArrayList<String>();
-                        idPendientes = new ArrayList<String>();
-                        for (int i=0; i<response.length();i++){
-                            try {
-                                jsonObject = response.getJSONObject(i);
-                                pendientes.add(jsonObject.getString("nombre"));
-                                idPendientes.add(jsonObject.getString("id"));
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        pintar(pendientes,idPendientes);
+                        lanzarVentana(id, nombre, area, num_salon, profesor);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -159,6 +121,36 @@ public class PendientesActivity extends AppCompatActivity {
         );
         requestQueue.add(jsor);
     }
-
-
+    private void obtenerListaMaterias() {
+        String url = "http://192.168.0.109/Interfaz4/subject_fetch_list.php";
+        JsonArrayRequest jsor = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSONObject jsonObject = new JSONObject();
+                        materias = new ArrayList<String>();
+                        idMaterias = new ArrayList<String>();
+                        for (int i=0; i<response.length();i++){
+                            try {
+                                jsonObject = response.getJSONObject(i);
+                                materias.add(jsonObject.getString("nombre"));
+                                idMaterias.add(jsonObject.getString("id"));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        pintar(materias,idMaterias);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"Error :"+error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        }
+        );
+        requestQueue.add(jsor);
+    }
 }
