@@ -46,7 +46,7 @@ public class MenuActivity2 extends AppCompatActivity {
         _btnTareas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),TareasActivity.class));
+                startActivity(new Intent(getApplicationContext(), MateriasActivity.class));
             }
         });
         _btnHorarios.setOnClickListener(new View.OnClickListener() {

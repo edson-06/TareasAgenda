@@ -12,11 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Agenda_Tareas"
         android:usesCleartextTraffic="true">
-        <activity android:name=".showPendienteActivity"></activity>
+        <activity android:name=".showMateriaActivity"></activity>
+        <activity android:name=".addMateriasActivity" />
+        <activity android:name=".showPendienteActivity" />
         <activity android:name=".addPendientesActivity" />
         <activity android:name=".RegistrarActivity" />
         <activity android:name=".HorariosActivity" />
-        <activity android:name=".TareasActivity" />
+        <activity android:name=".MateriasActivity" />
         <activity android:name=".PendientesActivity" />
         <activity android:name=".MenuActivity2" />
         <activity
