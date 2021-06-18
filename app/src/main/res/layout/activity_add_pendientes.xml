@@ -33,26 +33,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <EditText
-        android:id="@+id/txtPidMateria"
-        android:layout_width="338dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="38dp"
-        android:ems="10"
-        android:hint="idMateria"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPNombre" />
 
     <EditText
         android:id="@+id/txtPdescripcion"
         android:layout_width="336dp"
         android:layout_height="42dp"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="38dp"
         android:ems="10"
         android:hint="descripcion"
@@ -60,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPidMateria" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMaterias" />
 
     <Button
         android:id="@+id/btnPAgregrar"
@@ -129,5 +116,16 @@
         app:layout_constraintEnd_toStartOf="@+id/btnFecha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPdescripcion" />
+
+    <Spinner
+        android:id="@+id/spinnerMaterias"
+        android:layout_width="329dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="39dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPNombre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

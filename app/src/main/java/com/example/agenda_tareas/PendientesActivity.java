@@ -55,6 +55,7 @@ public class PendientesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PendientesActivity.this,addPendientesActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         _btnBuscar.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +94,7 @@ public class PendientesActivity extends AppCompatActivity {
         intent.putExtra("fecha",fecha);
         intent.putExtra("desscripción",desscripción);
         intent.putExtra("valor",valor);
+        Toast.makeText(getApplicationContext(),"Datos obtenidos :",Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
     private void obtenerPendienteParticular(String id){
