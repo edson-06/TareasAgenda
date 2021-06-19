@@ -41,7 +41,7 @@ public class PendientesActivity extends AppCompatActivity {
 
         _btnAñadir=findViewById(R.id.btnMAdd);
         _btnMexit = findViewById(R.id.btnMexit);
-        _btnBuscar=findViewById(R.id.btnMSearch);
+        _btnBuscar=findViewById(R.id.btnMbuscar);
         listView = (ListView)findViewById(R.id.lvPenientes);
         //instancia de objeto
         listView = findViewById(R.id.lvPenientes);

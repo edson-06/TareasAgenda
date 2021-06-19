@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.agenda_tareas">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +16,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Agenda_Tareas"
         android:usesCleartextTraffic="true">
-        <activity android:name=".showMateriaActivity"></activity>
+        <activity android:name=".ListaHorariosActivity"></activity>
+
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="true" />
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".ListaHorarios"
+            android:label="@string/title_activity_lista_horarios">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".showMateriaActivity" />
         <activity android:name=".addMateriasActivity" />
         <activity android:name=".showPendienteActivity" />
         <activity android:name=".addPendientesActivity" />
