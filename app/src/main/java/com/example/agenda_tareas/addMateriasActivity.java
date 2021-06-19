@@ -2,6 +2,7 @@ package com.example.agenda_tareas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -81,6 +82,14 @@ public class addMateriasActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+
+        cerrarVentana();
+    }
+
+    public void cerrarVentana(){
+        Intent intent = new Intent(addMateriasActivity.this,MateriasActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
