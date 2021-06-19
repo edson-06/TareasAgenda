@@ -94,8 +94,8 @@ public class PendientesActivity extends AppCompatActivity {
         intent.putExtra("fecha",fecha);
         intent.putExtra("desscripción",desscripción);
         intent.putExtra("valor",valor);
-        Toast.makeText(getApplicationContext(),"Datos obtenidos :",Toast.LENGTH_SHORT).show();
         startActivity(intent);
+        finish();
     }
     private void obtenerPendienteParticular(String id){
         String url = "http://192.168.0.109/Interfaz4/pending_fetch.php?id="+id;
@@ -155,7 +155,8 @@ public class PendientesActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"Error :"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Error :"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"La lista se encuentra vacía",Toast.LENGTH_SHORT).show();
             }
         }
         );

@@ -89,6 +89,7 @@ public class MateriasActivity extends AppCompatActivity {
         intent.putExtra("num_salon",num_salon);
         intent.putExtra("professor",professor);
         startActivity(intent);
+        finish();
     }
     private void obtenerPendienteParticular(String id){
         String url = "http://192.168.0.109/Interfaz4/subject_fetch.php?id="+id;

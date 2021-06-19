@@ -72,15 +72,12 @@ public class addPendientesActivity extends AppCompatActivity {
                 descripcion= _txtPdescripcion.getText().toString().trim();
 
                 CrearPendiente(nombre, id, fecha, descripcion);
-                Toast.makeText(addPendientesActivity.this,"Añadiendo",Toast.LENGTH_SHORT).show();
             }
         });
         _btnPCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(addPendientesActivity.this,PendientesActivity.class);
-                startActivity(intent);
-                finish();
+                cerrarVentana();
             }
         });
 
@@ -111,6 +108,13 @@ public class addPendientesActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+        cerrarVentana();
+
+    }
+    public void cerrarVentana(){
+        Intent intent = new Intent(addPendientesActivity.this,PendientesActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void abrirCalendario(View view) {
