@@ -56,7 +56,7 @@ public class showPendienteActivity extends AppCompatActivity {
 
         //Volley
         requestQueue = Volley.newRequestQueue(this);
-        //
+        //Datos obtenidos desde la actividad anterior
         idPendiente = getIntent().getStringExtra("id");
         nombre = getIntent().getStringExtra("nombre");
         idMat = getIntent().getStringExtra("idMateria");
