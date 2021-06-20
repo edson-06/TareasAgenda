@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,8 @@ import java.util.Map;
 
 
 public class showPendienteActivity extends AppCompatActivity {
+    RadioGroup radioGroupT;
+    RadioButton _rbBoton,rbt,rbnt;
     EditText _txtPUNombre, _txtPUNDescripcion;
     TextView _txtPUFecha;
     String nombre, idMat,descripcion,fecha,estado,idPendiente;
@@ -70,6 +74,15 @@ public class showPendienteActivity extends AppCompatActivity {
         _spinnerUp = findViewById(R.id.spinnerMaterias2);
         _btnEditPend = findViewById(R.id.btnPEditar);
         _btnDeletePend = findViewById(R.id.btnEliminar);
+        radioGroupT = findViewById(R.id.radioGroup);
+        rbt =findViewById(R.id.rbTerminado);
+        rbnt =findViewById(R.id.rbNoTerminado);
+
+        if(estado.equals("1"))
+            rbt.setChecked(true);
+        else
+            rbnt.setChecked(true);
+
         obtenerListaMaterias();
 
 
@@ -84,8 +97,12 @@ public class showPendienteActivity extends AppCompatActivity {
                 idMat= idMaterias.get(idMateriaSeleccionada);
                 fecha= _txtPUFecha.getText().toString().trim();
                 descripcion= _txtPUNDescripcion.getText().toString().trim();
-                estado="1";
-                ActualizarPendiente(idPendiente,nombre,idMat,descripcion, fecha, estado);
+                if(estado.equals("Terminado")){
+                    ActualizarPendiente(idPendiente,nombre,idMat,descripcion, fecha, "1");
+                }else{
+                    ActualizarPendiente(idPendiente,nombre,idMat,descripcion, fecha, "0");
+                }
+
             }
         });
 
@@ -227,4 +244,9 @@ public class showPendienteActivity extends AppCompatActivity {
         finish();
     }
 
+    public void rbPrecionado(View view) {
+        int radioId = radioGroupT.getCheckedRadioButtonId();
+        _rbBoton = findViewById(radioId);
+        estado = _rbBoton.getText().toString();
+    }
 }

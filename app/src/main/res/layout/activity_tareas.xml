@@ -32,7 +32,7 @@
             app:fab_colorNormal="#FFF"
             app:fab_title="Añadir"
             tools:src="@android:drawable/btn_plus" />
-
+        <!--
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnMatSearch"
             android:layout_width="wrap_content"
@@ -41,6 +41,7 @@
             app:fab_colorNormal="#FFF"
             app:fab_title="Buscar"
             tools:src="@android:drawable/ic_menu_search" />
+        -->
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnMatexit"

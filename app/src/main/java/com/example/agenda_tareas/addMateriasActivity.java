@@ -47,7 +47,6 @@ public class addMateriasActivity extends AppCompatActivity {
                 String Profesor= _txtProfesor.getText().toString().trim();
 
                 CrearMateria(nombre, area, numSalon, Profesor);
-                Toast.makeText(addMateriasActivity.this,"Añadiendo",Toast.LENGTH_SHORT).show();
             }
         });
         _btnPCancelar.setOnClickListener(new View.OnClickListener() {

@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Agenda_Tareas"
         android:usesCleartextTraffic="true">
-        <activity android:name=".showMateriaActivity"></activity>
+        <activity android:name=".ListaMateriasDiaActivity"></activity>
+        <activity android:name=".addHorarioActivity" />
+        <activity android:name=".showMateriaActivity" />
         <activity android:name=".addMateriasActivity" />
         <activity android:name=".showPendienteActivity" />
         <activity android:name=".addPendientesActivity" />

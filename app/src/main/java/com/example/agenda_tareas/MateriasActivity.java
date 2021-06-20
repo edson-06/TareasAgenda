@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MateriasActivity extends AppCompatActivity {
-    FloatingActionButton _btnMAñadir ,_btnMexit,_btnMBuscar;
+    FloatingActionButton _btnMAñadir ,_btnMexit;
     ListView listView;
     RequestQueue requestQueue;
     private ArrayList<String> materias;
@@ -39,7 +39,6 @@ public class MateriasActivity extends AppCompatActivity {
 
         _btnMAñadir=findViewById(R.id.btnMatAdd);
         _btnMexit = findViewById(R.id.btnMatexit);
-        _btnMBuscar=findViewById(R.id.btnMatSearch);
         listView = (ListView)findViewById(R.id.lvMaterias);
 
         /////
@@ -50,12 +49,7 @@ public class MateriasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MateriasActivity.this,addMateriasActivity.class);
                 startActivity(intent);
-            }
-        });
-        _btnMBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                finish();
             }
         });
 
@@ -90,6 +84,7 @@ public class MateriasActivity extends AppCompatActivity {
         intent.putExtra("professor",professor);
         startActivity(intent);
         finish();
+
     }
     private void obtenerPendienteParticular(String id){
         String url = "http://192.168.0.109/Interfaz4/subject_fetch.php?id="+id;
@@ -148,7 +143,7 @@ public class MateriasActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),"Error :"+error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"La lista se encuentra vacía",Toast.LENGTH_SHORT).show();
             }
         }
         );
