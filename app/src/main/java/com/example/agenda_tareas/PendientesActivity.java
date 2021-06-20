@@ -41,7 +41,7 @@ public class PendientesActivity extends AppCompatActivity {
 
         _btnAñadir=findViewById(R.id.btnMAdd);
         _btnMexit = findViewById(R.id.btnMexit);
-        _btnBuscar=findViewById(R.id.btnMSearch);
+        //_btnBuscar=findViewById(R.id.btnMSearch);
         listView = (ListView)findViewById(R.id.lvPenientes);
         //instancia de objeto
         listView = findViewById(R.id.lvPenientes);
@@ -56,12 +56,6 @@ public class PendientesActivity extends AppCompatActivity {
                 Intent intent = new Intent(PendientesActivity.this,addPendientesActivity.class);
                 startActivity(intent);
                 finish();
-            }
-        });
-        _btnBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 

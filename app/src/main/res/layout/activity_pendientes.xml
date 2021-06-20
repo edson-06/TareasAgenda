@@ -33,23 +33,15 @@
             app:fab_title="Añadir"
             tools:src="@android:drawable/btn_plus" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnMSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_search"
-            app:fab_colorNormal="#FFF"
-            app:fab_title="Buscar"
-            tools:src="@android:drawable/ic_menu_search" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnMexit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-            app:fab_colorNormal="#FFF"
-            app:fab_size="mini"
-            app:fab_title="Salir"
-            tools:src="@android:drawable/ic_menu_close_clear_cancel" />
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+       <com.getbase.floatingactionbutton.FloatingActionButton
+           android:id="@+id/btnMexit"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@android:drawable/ic_menu_close_clear_cancel"
+           app:fab_colorNormal="#FFF"
+           app:fab_size="mini"
+           app:fab_title="Salir"
+           tools:src="@android:drawable/ic_menu_close_clear_cancel" />
+   </com.getbase.floatingactionbutton.FloatingActionsMenu>
 </RelativeLayout>
