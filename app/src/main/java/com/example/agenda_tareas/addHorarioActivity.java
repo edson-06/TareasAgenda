@@ -17,6 +17,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -33,6 +34,7 @@ public class addHorarioActivity extends AppCompatActivity {
     Spinner _spinnerMaterias, _spinnerDias,_spinnerHoras;
     String urlMaterias = "http://192.168.0.109/Interfaz4/subject_fetch_list.php";
     String URLH="http://192.168.0.109/Interfaz4/horario_Save.php";
+    String urValidaaH="http://192.168.0.109/Interfaz4/horario_fetch.php";
     RequestQueue requestQueue;
     private ArrayList<String> HoraArray;
     private ArrayList<String> diaArray;
@@ -42,6 +44,7 @@ public class addHorarioActivity extends AppCompatActivity {
     ArrayAdapter<String> adapterDias;
     ArrayAdapter<String> adapterHoras;
     int idMateriaSeleccionada;
+    int valorHorario=0;
     String dia, materia, hora;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +96,8 @@ public class addHorarioActivity extends AppCompatActivity {
         _btnHAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CrearHorario(dia,materia,hora);
+                ValidarHorario(urValidaaH);
+
             }
         });
         _btnHCancelar.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +112,39 @@ public class addHorarioActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public  void ValidarHorario(String u){
+
+        StringRequest stringRequest= new StringRequest(Request.Method.POST, u, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(!response.isEmpty()){
+                    Toast.makeText(addHorarioActivity.this, "Dia y/o hora ocupados", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(addHorarioActivity.this, "2"+response, Toast.LENGTH_SHORT).show();
+                }else{
+                    CrearHorario(dia,materia,hora);
+
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(addHorarioActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String, String>();
+                parametros.put("dia",dia);
+                parametros.put("hora",hora);
+                return parametros;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
     private void CrearHorario(String dia, String idMat, String hora){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLH, new Response.Listener<String>() {
             @Override
