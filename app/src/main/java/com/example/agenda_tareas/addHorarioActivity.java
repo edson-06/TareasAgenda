@@ -119,9 +119,8 @@ public class addHorarioActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if(!response.isEmpty()){
                     Toast.makeText(addHorarioActivity.this, "Dia y/o hora ocupados", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(addHorarioActivity.this, "2"+response, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(addHorarioActivity.this, "2"+response, Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(addHorarioActivity.this, "1"+response, Toast.LENGTH_SHORT).show();
                     CrearHorario(dia,materia,hora);
 
                 }
